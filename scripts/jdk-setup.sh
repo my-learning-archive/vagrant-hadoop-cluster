@@ -1,21 +1,19 @@
 #!/bin/bash 
 
+If jdk is not installed...
 java -version &> /dev/null || {
 
-# Add the PPA for installing OpenJDK
-sudo add-apt-repository -y ppa:openjdk-r/ppa;
-
-# Update your local package index
-sudo apt-get update;
-
 # Install OpenJDK 8
+sudo add-apt-repository -y ppa:openjdk-r/ppa;
+sudo apt-get update;
 sudo apt-get install -y openjdk-8-jdk;
 
 # Set environmental variables
 cat >> .bashrc << EOF
+
 # JAVA Variables START
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin
 # JAVA Variables END
 EOF
 
