@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-If jdk is not installed...
+# If jdk is not installed...
 java -version &> /dev/null || {
 
 # Install OpenJDK 8
