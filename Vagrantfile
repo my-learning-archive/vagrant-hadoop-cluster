@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
     namenode_config.vm.provider :virtualbox do |namenode_config_v, override|
       namenode_config_v.customize ["modifyvm", :id, "--memory", "4096"]
     end
+    namenode_config.vm.provision "shell", privileged: false, path: "scripts/hive-setup.sh"
   end
 
 end

@@ -63,10 +63,13 @@ The initial cluster is configured with four nodes:
 4. datanode3: this node runs the following processes:
    - *Datanode*
 
-Adding nodes is a matter of editing the VagrantFile and worker files of Hadoop.
+Adding datanodes is a matter of editing the following files:
+ - [Vagrantfile](./Vagrantfile)
+ - [ssh-setup.sh](./scripts/ssh-setup.sh)
+ - [workers](./configs/hadoop/workers)
 
 ## Future work
 
-1. Make it possible to add Datanodes easily.
+1. Make it possible to add Datanodes more easily.
 
-2. Right now, Vagrant runs shell scripts on all nodes upon provisioning. These shell scripts are responsible for the instalation and configuration of the tools. It would be interesting to do this with **Ansible** playbooks instead.
+2. Right now, Vagrant runs shell scripts on all nodes upon provisioning. These shell scripts are responsible for the instalation and configuration of the tools. It would be interesting to do a branch that uses **Ansible** playbooks instead.
