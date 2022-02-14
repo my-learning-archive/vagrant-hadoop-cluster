@@ -91,7 +91,7 @@ Adding datanodes is a matter of editing the following files:
 2. The local host machine doesn't recognize the cluster hostnames, and that's why access to WebHDFS has to be done through the IP of the namenode, as mentioned earlier. Another consequence of this is that it won't be possible to preview or download HDFS files through WebHDFS in the host machine. If this is critical, the simple work-around is to add the IPs and hostnames of the VMs to the hosts file of your **host machine**:
 
    > In Windows: **C:\Windows\System32\drivers\etc\hosts**\
-   > In Linux: **/etc/hosts**\
+   > In Linux: **/etc/hosts**
    > > 192.168.2.10 namenode\
    > > 192.168.2.11 datanode1\
    > > 192.168.2.12 datanode2\
