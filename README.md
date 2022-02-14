@@ -1,16 +1,15 @@
 # Vagrant Hadoop Cluster
 
-## What is this project? 
+This is a little personal project that attempts to create a working virtual Hadoop cluster with Hadoop + Hive + Spark + Zookeeper + Kafka, using Vagrant.
 
-This is a little personal project that attempts to create a working virtual Hadoop cluster with Hadoop + Hive + Spark + 
-Zookeeper + Kafka, using Vagrant.
-
+---
 ## Requirements
 
 - VirtualBox 6.0
 - Vagrant 2.2.10
 - Minimum of 10GB RAM (as-is, the full cluster allocates 7GB of RAM in total - 4GB for the namenode, 1GB for each datanode)
 
+---
 ## Basic management
 
 To provision the cluster:
@@ -50,7 +49,6 @@ To check the statuses of the vagrant environment:
 
 > vagrant global-status
 
----
 **Start the Hadoop daemons before starting the work:**
 
 > vagrant ssh namenode\
@@ -60,6 +58,7 @@ Verify if daemons are working correctly with the jps command in each node. The p
 
 Additionally, very if all datanodes are listed in Hadoop's WebUI: [**192.168.2.10:9870**](192.168.2.10:9870)
 
+---
 ## Initial cluster setup
 
 The initial cluster is configured with four nodes:
@@ -83,12 +82,22 @@ Adding datanodes is a matter of editing the following files:
  - [workers](./configs/hadoop/workers) (Hadoop)
  - [workers](./configs/spark/workers) (Spark)
 
+---
 ## Known exceptions/bugs:
 
-If running a spark workload throws **<span style="color:red">java.io.FileNotFoundException: File does not exist: hdfs://namenode:9000/spark-logs</span>**:
+1. If running a spark workload throws **java.io.FileNotFoundException: File does not exist: hdfs://namenode:9000/spark-logs**:
+   > **namenode$** hadoop fs -mkdir -p /spark-logs
 
-> **namenode$** hadoop fs -mkdir -p /spark-logs
+2. The local host machine doesn't recognize the cluster hostnames, and that's why access to WebHDFS has to be done through the IP of the namenode, as mentioned earlier. Another consequence of this is that it won't be possible to preview or download HDFS files through WebHDFS in the host machine. If this is critical, the simple work-around is to add the IPs and hostnames of the VMs to the hosts file of your **host machine**:
 
+   > In Windows: **C:\Windows\System32\drivers\etc\hosts**\
+   > In Linux: **/etc/hosts**\
+   > > 192.168.2.10 namenode\
+   > > 192.168.2.11 datanode1\
+   > > 192.168.2.12 datanode2\
+   > > 192.168.2.13 datanode3
+
+---
 ## Future work
 
 1. Make it possible to add Datanodes more easily.
