@@ -9,6 +9,7 @@ Zookeeper + Kafka, using Vagrant.
 
 - VirtualBox 6.0
 - Vagrant 2.2.10
+- Minimum of 10GB RAM (as-is, the full cluster allocates 7GB of RAM in total - 4GB for the namenode, 1GB for each datanode)
 
 ## Basic management
 
@@ -26,8 +27,8 @@ To ssh into any of the machines:
 
 ssh is installed and configured within each machine so once inside a machine, you can ssh into any other machine with the host name or ip address:
 
-> namenode$ ssh < host name >\
-> namenode$ ssh < host ip address >
+> **namenode$** ssh < host name >\
+> **namenode$** ssh < host ip address >
 
 To halt the nodes (and save changes):
 
@@ -49,24 +50,44 @@ To check the statuses of the vagrant environment:
 
 > vagrant global-status
 
+---
+**Start the Hadoop daemons before starting the work:**
+
+> vagrant ssh namenode\
+> **namenode$** start-all.sh
+
+Verify if daemons are working correctly with the jps command in each node. The processes that should be running are listed in the [**Initial cluster setup**](#initial-cluster-setup).
+
+Additionally, very if all datanodes are listed in Hadoop's WebUI: [**192.168.2.10:9870**](192.168.2.10:9870)
+
 ## Initial cluster setup
 
 The initial cluster is configured with four nodes:
-1. namenode: this node is more powerful than the others and is configured to run the following processes: 
+1. **namenode** (4GB RAM): this node is more powerful than the others and is configured to run the following processes: 
    - *Namenode* 
    - *SecondaryNamenode* 
    - *ResourceManager* 
-2. datanode1: this node runs the following processes:
+2. **datanode1** (1GB RAM): this node runs the following processes:
+   - *NodeManager*
    - *Datanode*
-3. datanode2: this node runs the following processes:
+3. **datanode2** (1GB RAM): this node runs the following processes:
+   - *NodeManager*
    - *Datanode*
-4. datanode3: this node runs the following processes:
+4. **datanode3** (1GB RAM): this node runs the following processes:
+   - *NodeManager*
    - *Datanode*
 
 Adding datanodes is a matter of editing the following files:
  - [Vagrantfile](./Vagrantfile)
  - [ssh-setup.sh](./scripts/ssh-setup.sh)
- - [workers](./configs/hadoop/workers)
+ - [workers](./configs/hadoop/workers) (Hadoop)
+ - [workers](./configs/spark/workers) (Spark)
+
+## Known exceptions/bugs:
+
+If running a spark workload throws **<span style="color:red">java.io.FileNotFoundException: File does not exist: hdfs://namenode:9000/spark-logs</span>**:
+
+> **namenode$** hadoop fs -mkdir -p /spark-logs
 
 ## Future work
 
