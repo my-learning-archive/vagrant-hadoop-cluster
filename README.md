@@ -7,7 +7,7 @@ This is a little personal project that attempts to create a working virtual Hado
 
 - VirtualBox 6.0
 - Vagrant 2.2.10
-- Minimum of 10GB RAM (as-is, the full cluster allocates 7GB of RAM in total - 4GB for the namenode, 1GB for each datanode)
+- Minimum of 16GB RAM (as-is, the full cluster allocates 10GB of RAM in total - 4GB for the namenode, 2GB for each datanode)
 
 ---
 ## Basic management
@@ -108,8 +108,6 @@ Scaling vertically by adding resources to each node is a matter of editing the f
 ## TODO
 
 1. Add deployment of Zookeeper + Kafka
-2. Install Python
-3. Install PySpark
 
 ## Future work
 
