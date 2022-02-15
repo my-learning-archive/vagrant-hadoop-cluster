@@ -9,11 +9,11 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
   config.vm.base_mac = nil
   config.vm.provision "shell", privileged: false, path: "scripts/ssh-setup.sh"
-  config.vm.provision "shell", privileged: false, path: "scripts/jdk-setup.sh"
+  config.vm.provision "shell", privileged: false, path: "scripts/utils-setup.sh"
   config.vm.provision "shell", privileged: false, path: "scripts/hadoop-setup.sh"
   config.vm.provider :virtualbox do |v, override|
     override.vm.box_url = "https://app.vagrantup.com/ubuntu/boxes/focal64/versions/20220207.0.0/providers/virtualbox.box"
-    v.customize ["modifyvm", :id, "--memory", "1024"]
+    v.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
   config.vm.define :datanode1 do |datanode1_config|
