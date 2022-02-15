@@ -66,13 +66,13 @@ The initial cluster is configured with four nodes:
    - *Namenode* 
    - *SecondaryNamenode* 
    - *ResourceManager* 
-2. **datanode1** (1GB RAM): this node runs the following processes:
+2. **datanode1** (2GB RAM): this node runs the following processes:
    - *NodeManager*
    - *Datanode*
-3. **datanode2** (1GB RAM): this node runs the following processes:
+3. **datanode2** (2GB RAM): this node runs the following processes:
    - *NodeManager*
    - *Datanode*
-4. **datanode3** (1GB RAM): this node runs the following processes:
+4. **datanode3** (2GB RAM): this node runs the following processes:
    - *NodeManager*
    - *Datanode*
 
