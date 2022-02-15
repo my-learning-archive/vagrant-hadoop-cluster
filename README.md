@@ -56,7 +56,7 @@ To check the statuses of the vagrant environment:
 
 Verify if daemons are working correctly with the jps command in each node. The processes that should be running are listed in the [**Initial cluster setup**](#initial-cluster-setup).
 
-Additionally, very if all datanodes are listed in Hadoop's WebUI: [**192.168.2.10:9870**](192.168.2.10:9870)
+Additionally, verify if all datanodes are listed in Hadoop's WebUI: [**192.168.2.10:9870**](192.168.2.10:9870)
 
 ---
 ## Initial cluster setup
