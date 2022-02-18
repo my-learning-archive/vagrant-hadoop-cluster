@@ -1,6 +1,8 @@
 # Vagrant Hadoop Cluster
 
-This is a little personal project that attempts to create a working virtual Hadoop cluster with Hadoop + Hive + Spark, using Vagrant. This project is to be extended with the deployment of Zookeeper + Kafka as well.
+This is a little personal project that attempts to create a working virtual Hadoop cluster with Hadoop 3.3.1 + Hive 3.1.2 + Spark 3.2.1, using Vagrant. 
+
+This project is to be extended with the deployment of Zookeeper + Kafka as well.
 
 ---
 ## Requirements

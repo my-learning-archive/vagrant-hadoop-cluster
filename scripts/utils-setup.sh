@@ -55,5 +55,7 @@ python3 --version &> /dev/null || {
 sudo apt-get update
 sudo apt-get install -y software-properties-common
 sudo apt-get install -y python3.8
-sudo apt-get install -y python3-pip
 }
+
+# If pip is not installed, install pip
+pip3 --version &> /dev/null || sudo apt-get install -y python3-pip
